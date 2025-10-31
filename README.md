@@ -104,6 +104,19 @@ All preprocessing steps are internally managed to prevent schema mismatches:
 - Derived columns (e.g., loan-to-income ratio) are calculated automatically to reduce user input burden.
 - The app handles imbalanced classes and provides clear, interpretable outputs for financial decision-makers.
 
+## ScreenShots:
+<img width="959" height="927" alt="image" src="https://github.com/user-attachments/assets/3f75372b-7030-4063-aa4a-c3bdbfe64309" />
+<img width="1914" height="931" alt="image" src="https://github.com/user-attachments/assets/e46ff7ee-06ca-46cc-8752-9c4dcb2d605b" />
+<img width="1802" height="918" alt="image" src="https://github.com/user-attachments/assets/6a2277ca-08b4-4872-b444-05512b78151b" />
+<img width="1869" height="923" alt="image" src="https://github.com/user-attachments/assets/1eadf72c-467f-4cb9-b8a1-cd96480973ce" />
+<img width="1919" height="871" alt="image" src="https://github.com/user-attachments/assets/36e185bf-fc66-45c8-a9e5-fcc7a4367da9" />
+<img width="1841" height="901" alt="image" src="https://github.com/user-attachments/assets/7191b4a9-861b-4c93-bedb-cc220b658ce8" />
+<img width="310" height="986" alt="image" src="https://github.com/user-attachments/assets/721c9b01-f36b-4766-b290-231ab64c393d" />
+
+
+
+
+
 ## 👩‍💻 Author
 
 **Tasneem Firdhosh**  
