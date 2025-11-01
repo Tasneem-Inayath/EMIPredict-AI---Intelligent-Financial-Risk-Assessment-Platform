@@ -6,3 +6,5 @@ mlflow
 gdown
 xgboost==3.1.1
 scipy==1.16.2
+psutil==7.1.2
+numpy

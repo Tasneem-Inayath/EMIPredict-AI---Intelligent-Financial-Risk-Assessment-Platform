@@ -8,20 +8,17 @@ st.set_page_config(page_title="EMI Predictor", page_icon="📊", layout="centere
 st.title("📊 EMI Eligibility & Max EMI Prediction")
 
 # --- Step 1: Download and extract mlruns.zip ---
-mlruns_file_id = "19WLGLgKqz02l_pDVDGW2Q-EXH_wLOuIl"
-mlruns_url = f"https://drive.google.com/uc?id={mlruns_file_id}&export=download"
+
 mlruns_zip = "mlruns.zip"
 
+st.info("📥 Downloading model registry...")
+import zipfile
+import os
+
 if not os.path.exists("mlruns"):
-    try:
-        st.info("📥 Downloading model registry...")
-        gdown.download(mlruns_url, mlruns_zip, quiet=False)
-        with zipfile.ZipFile(mlruns_zip, 'r') as zip_ref:
-            zip_ref.extractall("mlruns")
-        st.success("✅ Model registry extracted")
-    except Exception as e:
-        st.error(f"❌ Failed to extract mlruns.zip: {e}")
-        st.stop()
+    with zipfile.ZipFile("mlruns.zip", 'r') as zip_ref:
+        zip_ref.extractall("mlruns")
+st.success("✅ Model registry extracted")
 
 # --- Step 2: Set MLflow tracking URI ---
 mlflow.set_tracking_uri("mlruns")

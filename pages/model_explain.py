@@ -29,14 +29,16 @@ def load_data():
 df = load_data()
 X = df.drop(columns=['emi_eligibility'], errors='ignore')
 
-# --- Download and extract mlruns.zip ---
-mlruns_file_id = "19WLGLgKqz02l_pDVDGW2Q-EXH_wLOuIl"
-mlruns_url = f"https://drive.google.com/uc?id={mlruns_file_id}&export=download"
-mlruns_zip = "mlruns.zip"
-gdown.download(mlruns_url, mlruns_zip, quiet=False)
 
-with zipfile.ZipFile(mlruns_zip, 'r') as zip_ref:
-    zip_ref.extractall("mlruns")
+mlruns_zip = "mlruns.zip"
+
+
+import zipfile
+import os
+
+if not os.path.exists("mlruns"):
+    with zipfile.ZipFile("mlruns.zip", 'r') as zip_ref:
+        zip_ref.extractall("mlruns")
 
 mlflow.set_tracking_uri("mlruns")
 
