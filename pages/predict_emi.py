@@ -148,8 +148,12 @@ if submitted:
     df['tenure_based_emi'] = (P * R * (1 + R) ** N) / ((1 + R) ** N - 1)
 
     # --- Load models ---
-    classifier = mlflow.pyfunc.load_model("models:/EMI_Classifier_XGBoost/Production")
-    regressor = mlflow.pyfunc.load_model("models:/EMI_Regressor_XGBoost/Production")
+    try:
+        classifier = mlflow.pyfunc.load_model("models:/EMI_Classifier_XGBoost/Production")
+        regressor = mlflow.pyfunc.load_model("models:/EMI_Regressor_XGBoost/Production")
+    except Exception as e:
+        st.error(f"❌ Failed to load model from MLflow: {e}")
+        st.stop()
 
     # --- Predict ---
     eligibility = classifier.predict(df_encoded)[0]
