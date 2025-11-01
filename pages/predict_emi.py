@@ -3,22 +3,37 @@ import gdown
 import streamlit as st
 import pandas as pd
 import mlflow.pyfunc
-
+import os
 st.set_page_config(page_title="EMI Predictor", page_icon="📊", layout="centered")
 st.title("📊 EMI Eligibility & Max EMI Prediction")
+
+# --- Step 1: Download and extract mlruns.zip ---
 mlruns_file_id = "1ssQYlvFyZiuyYxPuh4fe81RTq95aOMoX"
 mlruns_url = f"https://drive.google.com/uc?id={mlruns_file_id}&export=download"
 mlruns_zip = "mlruns.zip"
 
-print("📥 Downloading mlruns.zip...")
-gdown.download(mlruns_url, mlruns_zip, quiet=False)
-
-print("📂 Extracting mlruns.zip...")
-with zipfile.ZipFile(mlruns_zip, 'r') as zip_ref:
-    zip_ref.extractall("mlruns")
+if not os.path.exists("mlruns"):
+    try:
+        st.info("📥 Downloading model registry...")
+        gdown.download(mlruns_url, mlruns_zip, quiet=False)
+        with zipfile.ZipFile(mlruns_zip, 'r') as zip_ref:
+            zip_ref.extractall("mlruns")
+        st.success("✅ Model registry extracted")
+    except Exception as e:
+        st.error(f"❌ Failed to extract mlruns.zip: {e}")
+        st.stop()
 
 # --- Step 2: Set MLflow tracking URI ---
 mlflow.set_tracking_uri("mlruns")
+
+# --- Step 3: Load models safely ---
+try:
+    classifier = mlflow.pyfunc.load_model("models:/EMI_Classifier_XGBoost/Production")
+    regressor = mlflow.pyfunc.load_model("models:/EMI_Regressor_XGBoost/Production")
+except Exception as e:
+    st.error(f"❌ Failed to load model from MLflow: {e}")
+    st.stop()
+
 
 with st.form("emi_form"):
     st.subheader("Applicant Details")
