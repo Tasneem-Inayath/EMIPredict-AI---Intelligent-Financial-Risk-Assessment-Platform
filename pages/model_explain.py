@@ -61,8 +61,8 @@ except Exception as e:
     st.error(f"❌ Could not load classifier: {e}")
 
 try:
-    regressor = mlflow.pyfunc.load_model(
-        "mlruns/958227794677363910/models/m-064cf115b7264f9ba051e9161f74b1e3/artifacts"
+    regressor =  mlflow.pyfunc.load_model(
+        "mlruns/884078883015768601/models/m-064cf115b7264f9ba051e9161f74b1e3/artifacts"
     )
     st.success("✅ Regressor loaded successfully from MLflow Registry")
 except Exception as e:
@@ -118,20 +118,10 @@ X = X.reindex(columns=expected_input_cols, fill_value=0)
 st.subheader("📊 Model Metrics from MLflow")
 client = MlflowClient()
 
-def show_metrics_for_model(model_name, label):
+def show_metrics_for_run(run_id, label):
     try:
-        versions = client.search_model_versions(f"name='{model_name}'")
-        prod_versions = [v for v in versions if v.current_stage == "Production"]
-        if not prod_versions:
-            st.warning(f"No Production version found for {label}")
-            return
-
-        prod_version = prod_versions[0]
-        run_id = prod_version.run_id
-        version_metrics = {m.key: m.value for m in getattr(prod_version, "metrics", [])}
-        run_data = client.get_run(run_id).data #type: ignore
-        run_metrics = run_data.metrics
-        metrics = {**run_metrics, **version_metrics}
+        run_data = client.get_run(run_id).data
+        metrics = run_data.metrics
 
         st.markdown(f"### {label}")
         st.write("**Metrics:**", metrics if metrics else "No metrics logged")
@@ -147,8 +137,8 @@ def show_metrics_for_model(model_name, label):
     except Exception as e:
         st.error(f"❌ Could not fetch metrics for {label}: {e}")
 
-show_metrics_for_model("EMI_Classifier_XGBoost", "Classifier")
-show_metrics_for_model("EMI_Regressor_XGBoost", "Regressor")
+show_metrics_for_run("cfe97507737c468d96328c44d88ba10e", "Classifier")
+show_metrics_for_run("c6efeb5a1e844a378d0b6051d1f52497", "Regressor")
 
 # --- Prediction Visualizations ---
 st.subheader("📈 Prediction Distributions")
