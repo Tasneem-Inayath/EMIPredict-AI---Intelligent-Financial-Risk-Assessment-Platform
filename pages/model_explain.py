@@ -42,16 +42,17 @@ if not os.path.exists("mlruns"):
 
 mlflow.set_tracking_uri("mlruns")
 
+
 # --- Load models ---
 classifier, regressor = None, None
 try:
-    classifier = mlflow.pyfunc.load_model("models:/EMI_Classifier_XGBoost/Production")
+    classifier = mlflow.pyfunc.load_model("mlruns/models/EMI_Classifier_XGBoost/version-1")
     st.success("✅ Classifier loaded successfully from MLflow Registry")
 except Exception as e:
     st.error(f"❌ Could not load classifier: {e}")
 
 try:
-    regressor = mlflow.pyfunc.load_model("models:/EMI_Regressor_XGBoost/Production")
+    regressor = mlflow.pyfunc.load_model("mlruns/models/EMI_Regressor_XGBoost/version-1")
     st.success("✅ Regressor loaded successfully from MLflow Registry")
 except Exception as e:
     st.error(f"❌ Could not load regressor: {e}")

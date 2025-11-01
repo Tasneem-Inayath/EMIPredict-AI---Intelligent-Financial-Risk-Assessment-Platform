@@ -25,8 +25,8 @@ mlflow.set_tracking_uri("mlruns")
 
 # --- Step 3: Load models safely ---
 try:
-    classifier = mlflow.pyfunc.load_model("models:/EMI_Classifier_XGBoost/Production")
-    regressor = mlflow.pyfunc.load_model("models:/EMI_Regressor_XGBoost/Production")
+    classifier = mlflow.pyfunc.load_model("mlruns/models/EMI_Classifier_XGBoost/version-1")
+    regressor = mlflow.pyfunc.load_model("mlruns/models/EMI_Regressor_XGBoost/version-1")
 except Exception as e:
     st.error(f"❌ Failed to load model from MLflow: {e}")
     st.stop()
