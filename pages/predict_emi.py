@@ -8,7 +8,7 @@ st.set_page_config(page_title="EMI Predictor", page_icon="📊", layout="centere
 st.title("📊 EMI Eligibility & Max EMI Prediction")
 
 # --- Step 1: Download and extract mlruns.zip ---
-mlruns_file_id = "1ssQYlvFyZiuyYxPuh4fe81RTq95aOMoX"
+mlruns_file_id = "19WLGLgKqz02l_pDVDGW2Q-EXH_wLOuIl"
 mlruns_url = f"https://drive.google.com/uc?id={mlruns_file_id}&export=download"
 mlruns_zip = "mlruns.zip"
 
@@ -162,13 +162,25 @@ if submitted:
     # EMI formula
     df['tenure_based_emi'] = (P * R * (1 + R) ** N) / ((1 + R) ** N - 1)
 
-    # --- Load models ---
-    try:
-        classifier = mlflow.pyfunc.load_model("models:/EMI_Classifier_XGBoost/Production")
-        regressor = mlflow.pyfunc.load_model("models:/EMI_Regressor_XGBoost/Production")
-    except Exception as e:
-        st.error(f"❌ Failed to load model from MLflow: {e}")
-        st.stop()
+    expected_input_cols = [
+        'age', 'monthly_salary', 'years_of_employment', 'monthly_rent',
+        'family_size', 'dependents', 'school_fees', 'college_fees',
+        'travel_expenses', 'groceries_utilities', 'other_monthly_expenses',
+        'existing_loans', 'current_emi_amount', 'credit_score', 'bank_balance',
+        'emergency_fund', 'requested_amount', 'requested_tenure', 'max_monthly_emi',
+        'total_expenses', 'debt_to_income_ratio', 'expense_to_income_ratio',
+        'emi_gap', 'credit_risk_score', 'employment_stability',
+        'education_High School', 'education_Post Graduate', 'education_Professional',
+        'employment_type_private', 'employment_type_self-employed',
+        'emi_scenario_Education Emi', 'emi_scenario_Home Appliances Emi',
+        'emi_scenario_Personal Loan Emi', 'emi_scenario_Vehicle Emi',
+        'company_type_MNC', 'company_type_Mid-size', 'company_type_Small', 'company_type_Startup',
+        'house_type_Own', 'house_type_Rented', 'marital_status_Single',
+        'gender_FEMALE', 'gender_Female', 'gender_M', 'gender_MALE', 'gender_Male',
+        'gender_female', 'gender_male', 'salary_credit_interaction', 'balance_emi_gap'
+    ]
+    df_encoded = df_encoded.reindex(columns=expected_input_cols, fill_value=0)
+
 
     # --- Predict ---
     eligibility = classifier.predict(df_encoded)[0]

@@ -30,7 +30,7 @@ df = load_data()
 X = df.drop(columns=['emi_eligibility'], errors='ignore')
 
 # --- Download and extract mlruns.zip ---
-mlruns_file_id = "1ssQYlvFyZiuyYxPuh4fe81RTq95aOMoX"
+mlruns_file_id = "19WLGLgKqz02l_pDVDGW2Q-EXH_wLOuIl"
 mlruns_url = f"https://drive.google.com/uc?id={mlruns_file_id}&export=download"
 mlruns_zip = "mlruns.zip"
 gdown.download(mlruns_url, mlruns_zip, quiet=False)
