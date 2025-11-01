@@ -1,9 +1,24 @@
+import zipfile
+import gdown
 import streamlit as st
 import pandas as pd
 import mlflow.pyfunc
 
 st.set_page_config(page_title="EMI Predictor", page_icon="📊", layout="centered")
 st.title("📊 EMI Eligibility & Max EMI Prediction")
+mlruns_file_id = "1ssQYlvFyZiuyYxPuh4fe81RTq95aOMoX"
+mlruns_url = f"https://drive.google.com/uc?id={mlruns_file_id}&export=download"
+mlruns_zip = "mlruns.zip"
+
+print("📥 Downloading mlruns.zip...")
+gdown.download(mlruns_url, mlruns_zip, quiet=False)
+
+print("📂 Extracting mlruns.zip...")
+with zipfile.ZipFile(mlruns_zip, 'r') as zip_ref:
+    zip_ref.extractall("mlruns")
+
+# --- Step 2: Set MLflow tracking URI ---
+mlflow.set_tracking_uri("mlruns")
 
 with st.form("emi_form"):
     st.subheader("Applicant Details")

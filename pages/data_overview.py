@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import gdown
+
 
 # Page config
 st.set_page_config(page_title="Data Overview", page_icon="📊", layout="wide")
@@ -13,12 +15,17 @@ This page provides a quick overview of the EMI dataset:
 - Summary statistics
 - Class balance for **EMI Eligibility**
 """)
+file_id = '143OiDzUfZOaZMpRuGygu93FTZqJCByD8'
+url = f'https://drive.google.com/uc?id={file_id}&export=download'
+output = 'data.csv'
+
+gdown.download(url, output, quiet=False)
 
 # --- Load your dataset ---
 # Replace with your actual dataset path or data loading function
 @st.cache_data
 def load_data():
-    df = pd.read_csv("datasets/cleaned_emi_data.csv")  # adjust path
+    df = pd.read_csv(output, delimiter=',')  # adjust path
     return df
 
 df = load_data()

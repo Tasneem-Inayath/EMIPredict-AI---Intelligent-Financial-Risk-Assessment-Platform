@@ -5,16 +5,22 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+import gdown
 
 # 🎨 Streamlit Page Config
 st.set_page_config(page_title="EDA - EMI Prediction", layout="wide")
 st.title("📊 Exploratory Data Analysis (EDA)")
 st.markdown("Gain insights into your dataset before model training.")
+file_id = '143OiDzUfZOaZMpRuGygu93FTZqJCByD8'
+url = f'https://drive.google.com/uc?id={file_id}&export=download'
+output = 'data.csv'
+
+gdown.download(url, output, quiet=False)
 
 # 🧼 Load cleaned dataset
 @st.cache_data
 def load_data():
-    return pd.read_csv('datasets/cleaned_emi_data.csv')
+    return pd.read_csv(output)
 
 df = load_data()
 

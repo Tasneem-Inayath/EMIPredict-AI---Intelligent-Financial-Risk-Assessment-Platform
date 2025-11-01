@@ -1,3 +1,4 @@
+import gdown
 import streamlit as st
 import pandas as pd
 import seaborn as sns
@@ -12,11 +13,16 @@ st.markdown("""
 This page highlights the **engineered features** already included in the dataset.  
 These features are derived from raw applicant data to improve model performance and interpretability.
 """)
+file_id = '143OiDzUfZOaZMpRuGygu93FTZqJCByD8'
+url = f'https://drive.google.com/uc?id={file_id}&export=download'
+output = 'data.csv'
+
+gdown.download(url, output, quiet=False)
 
 # --- Load dataset ---
 @st.cache_data
 def load_data():
-    df = pd.read_csv("datasets/cleaned_emi_data.csv")  # already includes derived features
+    df = pd.read_csv(output)  # already includes derived features
     return df
 
 df = load_data()
