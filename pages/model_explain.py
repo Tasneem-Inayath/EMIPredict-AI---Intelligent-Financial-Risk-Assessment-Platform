@@ -45,14 +45,25 @@ mlflow.set_tracking_uri("mlruns")
 
 # --- Load models ---
 classifier, regressor = None, None
+    # classifier = mlflow.pyfunc.load_model(
+    #     "mlruns/958227794677363910/models/m-489da889889443a8af1433bbbad454b8/artifacts"
+    # )
+    # regressor = mlflow.pyfunc.load_model(
+    #     "mlruns/958227794677363910/models/m-064cf115b7264f9ba051e9161f74b1e3/artifacts"
+    # )
+
 try:
-    classifier = mlflow.pyfunc.load_model("mlruns/models/EMI_Classifier_XGBoost/version-1")
+    classifier =  mlflow.pyfunc.load_model(
+        "mlruns/958227794677363910/models/m-489da889889443a8af1433bbbad454b8/artifacts"
+    )
     st.success("✅ Classifier loaded successfully from MLflow Registry")
 except Exception as e:
     st.error(f"❌ Could not load classifier: {e}")
 
 try:
-    regressor = mlflow.pyfunc.load_model("mlruns/models/EMI_Regressor_XGBoost/version-1")
+    regressor = mlflow.pyfunc.load_model(
+        "mlruns/958227794677363910/models/m-064cf115b7264f9ba051e9161f74b1e3/artifacts"
+    )
     st.success("✅ Regressor loaded successfully from MLflow Registry")
 except Exception as e:
     st.error(f"❌ Could not load regressor: {e}")
