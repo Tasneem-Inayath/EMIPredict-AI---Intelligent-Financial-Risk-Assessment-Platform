@@ -36,7 +36,7 @@ with col1:
         st.switch_page("pages/prediction_emi.py")
 
     if st.button("📘 MLflow Tracking"):
-        st.switch_page("pages/model_ex.py")
+        st.switch_page("pages/model_explain.py")
 
 # Optional image or logo
 # st.image("logo.png", width=200)
