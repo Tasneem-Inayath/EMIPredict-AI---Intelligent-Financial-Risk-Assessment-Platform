@@ -1,0 +1,6 @@
+artifact_location: mlflow-artifacts:/779327931942531374
+creation_time: 1764402328247
+experiment_id: '779327931942531374'
+last_update_time: 1764402328247
+lifecycle_stage: active
+name: emi_regression_experiment

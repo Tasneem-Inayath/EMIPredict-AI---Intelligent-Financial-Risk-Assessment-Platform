@@ -1,0 +1,14 @@
+artifact_uri: mlflow-artifacts:/924749176205125717/d2af0783a6114bc4b3c43bba6af83623/artifacts
+end_time: 1764402015486
+entry_point_name: ''
+experiment_id: '924749176205125717'
+lifecycle_stage: active
+run_id: d2af0783a6114bc4b3c43bba6af83623
+run_name: GradientBoosting_Classifier
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764401956848
+status: 3
+tags: []
+user_id: Tasneem Inayath

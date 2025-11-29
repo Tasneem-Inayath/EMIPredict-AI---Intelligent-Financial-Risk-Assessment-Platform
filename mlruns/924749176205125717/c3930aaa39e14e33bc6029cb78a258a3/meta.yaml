@@ -1,0 +1,14 @@
+artifact_uri: mlflow-artifacts:/924749176205125717/c3930aaa39e14e33bc6029cb78a258a3/artifacts
+end_time: 1764401894177
+entry_point_name: ''
+experiment_id: '924749176205125717'
+lifecycle_stage: active
+run_id: c3930aaa39e14e33bc6029cb78a258a3
+run_name: RandomForest_Classifier
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764401865485
+status: 3
+tags: []
+user_id: Tasneem Inayath

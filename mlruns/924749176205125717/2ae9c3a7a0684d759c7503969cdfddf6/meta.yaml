@@ -1,0 +1,14 @@
+artifact_uri: mlflow-artifacts:/924749176205125717/2ae9c3a7a0684d759c7503969cdfddf6/artifacts
+end_time: 1764401941514
+entry_point_name: ''
+experiment_id: '924749176205125717'
+lifecycle_stage: active
+run_id: 2ae9c3a7a0684d759c7503969cdfddf6
+run_name: XGBoost_Classifier
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764401918272
+status: 3
+tags: []
+user_id: Tasneem Inayath

@@ -1,0 +1,14 @@
+artifact_uri: mlflow-artifacts:/779327931942531374/729f90a441254754ada71b3b66d64745/artifacts
+end_time: 1764402783755
+entry_point_name: ''
+experiment_id: '779327931942531374'
+lifecycle_stage: active
+run_id: 729f90a441254754ada71b3b66d64745
+run_name: XGBoost_Regressor
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764402772522
+status: 3
+tags: []
+user_id: Tasneem Inayath
