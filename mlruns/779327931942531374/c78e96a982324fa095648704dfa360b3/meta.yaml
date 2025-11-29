@@ -1,14 +1,3 @@
-artifact_uri: mlflow-artifacts:/779327931942531374/c78e96a982324fa095648704dfa360b3/artifacts
-end_time: 1764402410484
-entry_point_name: ''
-experiment_id: '779327931942531374'
-lifecycle_stage: active
-run_id: c78e96a982324fa095648704dfa360b3
-run_name: RandomForest_Regressor
-source_name: ''
-source_type: 4
-source_version: ''
-start_time: 1764402328280
-status: 3
-tags: []
-user_id: Tasneem Inayath
+version https://git-lfs.github.com/spec/v1
+oid sha256:8f9428d7953c6250383779d407975e94e90ad74b8a70c9cf39f5257261ae686a
+size 393
