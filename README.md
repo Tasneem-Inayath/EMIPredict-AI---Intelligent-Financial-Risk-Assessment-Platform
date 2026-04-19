@@ -88,7 +88,7 @@ The dataset underwent extensive cleaning and preprocessing:
 
 ---
 ##Link for Review :
-![description](https://emipredict-ai---intelligent-financial-risk-assessment-platform.streamlit.app/)
+[Link](https://emipredict-ai---intelligent-financial-risk-assessment-platform.streamlit.app/)
 ---
 ## Model Deployment & MLflow
 - Models logged, registered, and transitioned to **Production stage** using MLflow.
