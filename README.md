@@ -87,7 +87,9 @@ The dataset underwent extensive cleaning and preprocessing:
 - Mean Squared Error (MSE), Root Mean Squared Error (RMSE), Mean Absolute Error (MAE), R², MAPE
 
 ---
-
+##Link for Review :
+![description](https://emipredict-ai---intelligent-financial-risk-assessment-platform.streamlit.app/)
+---
 ## Model Deployment & MLflow
 - Models logged, registered, and transitioned to **Production stage** using MLflow.
 - **Label encoder** and **scaler** saved as artifacts for consistent predictions on new data.
